@@ -1,4 +1,7 @@
-import io.restassured.RestAssured;
+package com.cybercom.api.tests;
+
+import com.cybercom.api.base.BaseTest;
+import com.cybercom.api.config.ConfigReader;
 import io.restassured.http.ContentType;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -10,7 +13,7 @@ public class LoginAPITest extends BaseTest {
     @BeforeClass
     public void setup() {
        // RestAssured.baseURI = "https://reqres.in/api";
-        baseURI=ConfigReader.get("base.url");
+        baseURI= ConfigReader.get("base.url");
     }
 
     // TC_01 - Valid Login

@@ -1,10 +1,12 @@
+package com.cybercom.api.tests;
+
+import com.cybercom.api.config.ConfigReader;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import static io.restassured.RestAssured.*;
-import static org.hamcrest.Matchers.*;
 
 public class DataDrivenLoginTest {
 

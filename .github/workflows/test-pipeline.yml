@@ -47,3 +47,12 @@ jobs:
           name: surefire-reports
           path: target/surefire-reports/
           retention-days: 30
+
+      # Step 6 — Upload ExtentReports HTML report
+      - name: Upload ExtentReports HTML
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: extent-report
+          path: target/extent-reports/
+          retention-days: 30

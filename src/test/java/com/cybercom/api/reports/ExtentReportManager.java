@@ -7,12 +7,14 @@ import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 public class ExtentReportManager {
 
     private static ExtentReports extent;
-    private static ExtentTest test;
+   // private static ExtentTest test;
+    private static ThreadLocal<ExtentTest> test = new ThreadLocal<>();
 
     public static ExtentReports getInstance() {
         if (extent == null) {
             ExtentSparkReporter reporter = new ExtentSparkReporter(
-                    "reports/ExtentReport.html"
+                    //"reports/ExtentReport.html"
+                    "target/extent-reports/ExtentReport.html"
             );
             reporter.config().setReportName("API Automation Report");
             reporter.config().setDocumentTitle("Test Results");
@@ -25,8 +27,12 @@ public class ExtentReportManager {
     }
 
     public static ExtentTest createTest(String testName) {
-        test = getInstance().createTest(testName);
-        return test;
+        ExtentTest extentTest = getInstance().createTest(testName);
+        test.set(extentTest);
+        return extentTest;
+    }
+    public static ExtentTest getTest() {
+        return test.get();
     }
 
     public static void flush() {
